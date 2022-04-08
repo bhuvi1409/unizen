@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="ISO-8859-1">
+<title>USER TABLE</title>
+</head>
+<body>
+<div align="center">	
+	<h3 th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]]</h3>
+		
+	<form th:action="@{/logout}" method="post">
+		<input type="submit" value="Logout" />
+	</form>
+	
+	<h1>Product Manager</h1>
+	<a href="new">Create New user</a>
+	
+	<br/><br/>
+	<table border="1" cellpadding="10">
+		<thead>
+			<tr>
+				<th>user Id</th>
+				<th>firstName</th>
+				<th>lastBrand</th>
+				<th>email</th>
+				<th>Action</th>
+	
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="users : ${listUsers}">
+				<td th:text="${users.id}">user Id</td>
+				<td th:text="${users.firstName}">firstName</td>
+				<td th:text="${users.lastName}">lastName</td>
+				<td th:text="${users.email}">email</td>
+			<td>
+					<a th:href="@{'/edit/' + ${users.id}}">Edit</a>
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<a th:href="@{'/delete/' + ${users.id}}">Delete</a>
+					</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+</body>
+</html>

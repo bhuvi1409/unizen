@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<div class="container text-center">
+    <div>
+        <form th:action="@{/logout}" method="post" th:align="right">
+            <p>
+                Welcome <b>[[${#request.userPrincipal.principal.fullName}]] </b>
+                <span sec:authentication="principal.authorities"></span>
+            </p>
+            <input type="submit" value="Sign Out" />
+        </form>
+    </div>
+</div>
+
+<div class="sidebar">
+    <div class="logo-details">
+        <i class='bx bxl-c-plus-plus'></i>
+        <span class="logo_name">Welcome to user portal</span>
+    </div>
+    <ul class="nav-links">
+        <li>
+            <a href="#" class="active">
+                <i class='bx bx-grid-alt' ></i>
+                <span class="links_name">Dashboard</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class='bx bx-box' ></i>
+                <span class="links_name">Profile Information</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class='bx bx-list-ul' ></i>
+                <span class="links_name">List Of Working</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class='bx bx-pie-chart-alt-2' ></i>
+                <span class="links_name">Task History</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class='bx bx-coin-stack' ></i>
+                <span class="links_name">Clockin/Clockout</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class='bx bx-book-alt' ></i>
+                <span class="links_name">Job Assign</span>
+            </a>
+        </li>
+        <li>
+            <a href="http://localhost:8080/payroll/export">
+                <i class='bx bx-user' ></i>
+                <span class="links_name">Payslips</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class='bx bx-message' ></i>
+                <span class="links_name">Leaves</span>
+            </a>
+        </li>
+        <li>
+            <a href="@{/calendar}">
+                <i class='bx bx-heart' ></i>
+                <span class="links_name">Calender</span>
+            </a>
+        </li>
+        <li>
+            <a href="1.html">
+                <i class='bx bx-cog' ></i>
+                <span class="links_name">Setting</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<section class="home-section">
+        <div class="sidebar-button">
+            <i class='bx bx-menu sidebarBtn'></i>
+            <span class="dashboard">Dashboard</span>
+        </div>
+        <div class="search-box">
+            <input type="text" placeholder="Search...">
+            <i class='bx bx-search' ></i>
+        </div>
+</section>
+
+<script>
+    let sidebar = document.querySelector(".sidebar");
+    let sidebarBtn = document.querySelector(".sidebarBtn");
+    sidebarBtn.onclick = function() {
+        sidebar.classList.toggle("active");
+        if(sidebar.classList.contains("active")){
+            sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right");
+        }else
+            sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+    }
+</script>
+</body>
+</html>

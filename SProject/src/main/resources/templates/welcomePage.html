@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="ISO-8859-1">
+<title>welcome</title>
+</head>
+<body>
+<div class="container text-center">
+<h3>welcome</h3>
+<h3> please do login</h3>
+<h4 ><a th:href="@{/login}">Click here to Login</a></h4>
+</div>
+	<div class="text-center w-full p-t-115">
+						<span class="txt1">
+							CREATE NEW ACCOUNT
+						</span>
+				<br><a class="txt1 bo1 hov1" th:href="@{/register}">
+					Sign up now
+				</a>
+			</div>
+			
+</body>
+</html>
